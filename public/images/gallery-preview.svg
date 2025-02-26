@@ -1,0 +1,33 @@
+<svg width="800" height="500" viewBox="0 0 800 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="500" rx="12" fill="url(#paint0_linear)" />
+  
+  <!-- Gallery Grid -->
+  <rect x="50" y="50" width="220" height="180" rx="8" fill="white" fill-opacity="0.1" />
+  <rect x="290" y="50" width="220" height="180" rx="8" fill="white" fill-opacity="0.15" />
+  <rect x="530" y="50" width="220" height="180" rx="8" fill="white" fill-opacity="0.1" />
+  
+  <rect x="50" y="250" width="220" height="180" rx="8" fill="white" fill-opacity="0.15" />
+  <rect x="290" y="250" width="220" height="180" rx="8" fill="white" fill-opacity="0.1" />
+  <rect x="530" y="250" width="220" height="180" rx="8" fill="white" fill-opacity="0.15" />
+  
+  <!-- Interface Elements -->
+  <rect x="50" y="20" width="120" height="10" rx="5" fill="white" fill-opacity="0.3" />
+  <rect x="680" y="20" width="70" height="10" rx="5" fill="white" fill-opacity="0.3" />
+  <rect x="600" y="20" width="70" height="10" rx="5" fill="white" fill-opacity="0.3" />
+  
+  <!-- Photo Icons -->
+  <path d="M150 120C150 115.582 153.582 112 158 112H162C166.418 112 170 115.582 170 120V160C170 164.418 166.418 168 162 168H158C153.582 168 150 164.418 150 160V120Z" fill="white" fill-opacity="0.4" />
+  <path d="M390 120C390 115.582 393.582 112 398 112H402C406.418 112 410 115.582 410 120V160C410 164.418 406.418 168 402 168H398C393.582 168 390 164.418 390 160V120Z" fill="white" fill-opacity="0.4" />
+  <path d="M630 120C630 115.582 633.582 112 638 112H642C646.418 112 650 115.582 650 120V160C650 164.418 646.418 168 642 168H638C633.582 168 630 164.418 630 160V120Z" fill="white" fill-opacity="0.4" />
+  
+  <path d="M150 320C150 315.582 153.582 312 158 312H162C166.418 312 170 315.582 170 320V360C170 364.418 166.418 368 162 368H158C153.582 368 150 364.418 150 360V320Z" fill="white" fill-opacity="0.4" />
+  <path d="M390 320C390 315.582 393.582 312 398 312H402C406.418 312 410 315.582 410 320V360C410 364.418 406.418 368 402 368H398C393.582 368 390 364.418 390 360V320Z" fill="white" fill-opacity="0.4" />
+  <path d="M630 320C630 315.582 633.582 312 638 312H642C646.418 312 650 315.582 650 320V360C650 364.418 646.418 368 642 368H638C633.582 368 630 364.418 630 360V320Z" fill="white" fill-opacity="0.4" />
+  
+  <defs>
+    <linearGradient id="paint0_linear" x1="0" y1="0" x2="800" y2="500" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#C7D2FE" />
+      <stop offset="1" stop-color="#E0E7FF" />
+    </linearGradient>
+  </defs>
+</svg> 
