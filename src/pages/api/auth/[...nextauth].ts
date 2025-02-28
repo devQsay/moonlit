@@ -3,6 +3,25 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { verifyPassword } from "@/lib/auth";
 import { getUserByEmail } from "@/lib/db";
 
+// Extend the JWT type to include our custom fields
+declare module "next-auth/jwt" {
+  interface JWT {
+    id?: string;
+    role?: string;
+  }
+}
+
+// Extend the Session type to include our custom fields
+declare module "next-auth" {
+  interface Session {
+    user: {
+      id?: string;
+      email?: string;
+      role?: string;
+    };
+  }
+}
+
 export default NextAuth({
   providers: [
     CredentialsProvider({
@@ -13,14 +32,14 @@ export default NextAuth({
       },
       async authorize(credentials) {
         if (!credentials?.email || !credentials.password) {
-          throw new Error("Missing email or password");
+          return null;
         }
 
         // Find the user in the database
         const user = await getUserByEmail(credentials.email);
 
         if (!user) {
-          throw new Error("No user found with this email");
+          return null;
         }
 
         // Verify the password
@@ -30,7 +49,7 @@ export default NextAuth({
         );
 
         if (!isValid) {
-          throw new Error("Incorrect password");
+          return null;
         }
 
         // Return user object (will be stored in the session)
@@ -43,39 +62,26 @@ export default NextAuth({
   },
   callbacks: {
     async jwt({ token, user }) {
-      console.log("JWT Callback - Before:", token);
-
       if (user) {
         token.id = user.id;
         token.role = user.role;
       }
-      if (!token.id) {
-        console.log("JWT Callback - No valid user, returning undefined");
-        return undefined;
-      }
-
-      console.log("JWT Callback - Returning:", token);
       return token;
     },
     async session({ session, token }) {
-      console.log("Session Callback:", session);
-      console.log("Token:", token);
-      console.log("================================================");
-
-      if (!token || !token.id) {
-        console.log("Session Callback: Returning an empty session");
-        return null; // Return original session if token is invalid
-      }
-
-      return {
-        ...session,
-        user: {
+      if (token) {
+        session.user = {
           ...session.user,
-          id: token.sub,
+          id: token.sub || "",
           role: (token.role as string) || "",
-        },
-      };
+        };
+      }
+      return session;
     },
+  },
+  pages: {
+    signIn: "/login",
+    error: "/login",
   },
   secret: process.env.NEXTAUTH_SECRET,
 });
